@@ -9,10 +9,12 @@ distinct (department)
 from company.worker;
 
 -- Q-3. Write an SQL query to show the last 5 record from a table.
-WITH RankedRecords AS(
-	SELECT *,ROW_NUMBER() OVER () AS row_num
-	FROM Worker
-    )
+WITH RankedRecords AS (
+    SELECT *, ROW_NUMBER() OVER () AS row_num
+    FROM worker
+)
 SELECT *
 FROM RankedRecords
-WHERE row_num > (SELECT COUNT(*)FROM Worker)-5;
+WHERE row_num > (SELECT COUNT(*) FROM worker) - 5;
+SELECT DATABASE();
+
